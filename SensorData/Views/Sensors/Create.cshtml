@@ -1,0 +1,51 @@
+﻿@model SensorData.Models.Sensor
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Sensor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SensorTypeId" class="control-label"></label>
+                <select asp-for="SensorTypeId" class ="form-control" asp-items="ViewBag.SensorTypeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SensorCode" class="control-label"></label>
+                <input asp-for="SensorCode" class="form-control" />
+                <span asp-validation-for="SensorCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocationId" class="control-label"></label>
+                <select asp-for="LocationId" class ="form-control" asp-items="ViewBag.LocationId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpectedMin" class="control-label"></label>
+                <input asp-for="ExpectedMin" class="form-control" />
+                <span asp-validation-for="ExpectedMin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpectedMax" class="control-label"></label>
+                <input asp-for="ExpectedMax" class="form-control" />
+                <span asp-validation-for="ExpectedMax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
