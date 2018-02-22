@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SensorData.DBContext;
 using SensorData.Repositories;
+using SensorData.Service;
 
 namespace SensorData
 {
@@ -33,6 +34,9 @@ namespace SensorData
             // Add framework services.
             services.AddMvc();
             services.AddScoped<ISensorRepository, SensorRepository>();
+            services.AddScoped<ISensorService, SensorService>();
+            services.AddScoped<ICassandraRepository, CassandraRepository>();
+
             services.AddDbContext<SensorContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
         }
